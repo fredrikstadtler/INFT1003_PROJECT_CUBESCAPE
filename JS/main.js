@@ -7,15 +7,26 @@ const player = {
     height: 40,
     x: canvas.width / 2 - 20,
     y: playerstart + 60,
-    speed: 5,
+    g_a: 0.05, // gravitasjons akselerasjon
+    speed: 2.5, // spiller hastighet
+    jump: 3, // hopp fart
     dx: 0,
     dy: 0
 };
 
+function gravity() {
+    if (player.y < playerstart+60) {
+        player.dy += player.g_a;
+    }
+    else if (player.y > playerstart+60) {
+        player.dy = 0;
+    }
+}
+
 function updatePlayer() {
     player.x += player.dx;
     player.y += player.dy;
-
+    gravity();
     if (player.x + player.width < 0) {
         player.x = canvas.width;
     } else if (player.x > canvas.width) {
@@ -38,6 +49,12 @@ function playerStop(e) {
     if (e.key === 'd' || e.key === 'a') player.dx = 0;
 }
 
+function playerJump(e) {
+    if (e.key === ' ') {
+        player.dy = -player.jump;
+    }
+}
+
 function gameLoop() {
     updatePlayer();
     drawPlayer();
@@ -46,5 +63,6 @@ function gameLoop() {
 
 document.addEventListener("keydown", playerMove);
 document.addEventListener("keyup", playerStop);
+document.addEventListener("keydown", playerJump);
 
 gameLoop();
