@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            padding-top: 60px;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        
+        .card {
+            width: 300px;
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #333;
+            border-radius: 15px;
+            background: rgba(40, 40, 40, 0.9);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(51, 94, 255, 0.4);
+            border-color: #4a4a4a;
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            margin-top: 15px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: rgba(30, 30, 30, 0.9);
+            color: #fff;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #666;
+            box-shadow: 0 0 10px rgba(51, 94, 255, 0.3);
+        }
+        h2 {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+    </style>
+
+<nav style="position: fixed; top: 0; width: 100%; background-color: #333; padding: 10px;">
+    <a href="..\index.html" style="color: white; text-decoration: none; margin-right: 20px;">Home</a>
+    <a href="contact.html" style="color: white; text-decoration: none;">Contact</a>
+</nav>
+
+        <div class="card-container">
+            <div class="card">
+                <h2>Sander Haza Rise</h2>
+                <div class="card-content">
+                    <textarea placeholder="Utvikler 1"></textarea>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Hans Fredrik Haddal Stadtler</h2>
+                <div class="card-content">
+                    <textarea placeholder="Utvikler 2"></textarea>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Erlend Isaksen Bekkos</h2>
+                <div class="card-content">
+                    <textarea placeholder="Utvikler 3"></textarea>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Yuchao Ma</h2>
+                <div class="card-content">
+                    <textarea placeholder="Utvikler 4"></textarea>
+                </div>
+            </div>
+        </div>
+    
+</body>
+</html>
