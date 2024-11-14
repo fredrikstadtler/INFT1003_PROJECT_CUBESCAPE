@@ -43,16 +43,14 @@ function drawPlayer() {
 function playerMove(e) {
     if (e.key === 'd') player.dx = player.speed;
     else if (e.key === 'a') player.dx = -player.speed;
+    if (e.key === ' ') {
+        if (player.dy != 0) return;
+        else player.dy = -player.jump;
+    }
 }
 
 function playerStop(e) {
     if (e.key === 'd' || e.key === 'a') player.dx = 0;
-}
-
-function playerJump(e) {
-    if (e.key === ' ') {
-        player.dy = -player.jump;
-    }
 }
 
 function gameLoop() {
@@ -63,6 +61,5 @@ function gameLoop() {
 
 document.addEventListener("keydown", playerMove);
 document.addEventListener("keyup", playerStop);
-document.addEventListener("keydown", playerJump);
 
 gameLoop();
