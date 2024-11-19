@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-</head>
-<body>
     <style>
         body {
             background-color: black;
             margin: 0;
             font-family: 'Arial', sans-serif;
         }
-        
+
         .card-container {
             display: flex;
             align-items: center;
@@ -21,7 +19,7 @@
             gap: 20px;
             padding-top: 50px;
         }
-        
+
         .card {
             width: 300px;
             margin: 20px;
@@ -33,13 +31,13 @@
             backdrop-filter: blur(4px);
             transition: all 0.3s ease;
         }
-        
+
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 45px rgba(51, 94, 255, 0.4);
             border-color: #4a4a4a;
         }
-        
+
         .card img {
             width: 100%;
             height: 200px;
@@ -47,11 +45,11 @@
             border-radius: 10px;
             transition: all 0.3s ease;
         }
-        
+
         .card:hover img {
             transform: scale(1.05);
         }
-        
+
         .card-content {
             margin-top: 15px;
             color: white;
@@ -68,25 +66,13 @@
             justify-content: center;
             z-index: 1000;  /* Ensure navbar stays on top of other elements */
         }
-        
-        textarea {
-            width: 100%;
-            height: 100px;
-            margin-top: 10px;
-            padding: 12px;
-            border: 1px solid #444;
-            border-radius: 8px;
-            background: rgba(30, 30, 30, 0.9);
-            color: #fff;
-            resize: vertical;
-            transition: all 0.3s ease;
-        }
-        
+
         textarea:focus {
             outline: none;
             border-color: #666;
             box-shadow: 0 0 10px rgba(51, 94, 255, 0.3);
         }
+
         h2 {
             color: white;
             text-align: center;
@@ -94,41 +80,78 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
+        .back-card {
+            position: fixed;
+            top: 50px;
+            left: 10px;
+            width: 100px; /* Smaller card width */
+            padding: 10px;
+            background: rgba(60, 60, 60, 0.9);
+            color: white;
+            border: 1px solid #444;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2000; /* Ensure it stays on top */
+        }
+
+        .back-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(51, 94, 255, 0.4);
+            border-color: #4a4a4a;
+        }
+
+        .back-card a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
     </style>
+</head>
+<body>
 
-<nav style="position: fixed; top: 0; width: 100%; background-color: #333; padding: 10px; display: flex; justify-content: center;">
-    <a href="mainmenu.html" style="color: white; text-decoration: none;">Home</a>
-    <a href="..\index.html" style="color: white; text-decoration: none; margin-right: 20px; margin-left: 20px;">Play</a>
-    <a href="help.html" style="color: white; text-decoration: none;">Help</a>
-    <a href="contact.html" style="color: white; text-decoration: none; margin-left: 20px;">Contact</a>
-</nav>
+    <nav style="position: fixed; top: 0; width: 100%; background-color: #333; padding: 10px; display: flex; justify-content: center;">
+        <a href="mainmenu.html" style="color: white; text-decoration: none;">Home</a>
+        <a href="..\index.html" style="color: white; text-decoration: none; margin-right: 20px; margin-left: 20px;">Play</a>
+        <a href="help.html" style="color: white; text-decoration: none;">Help</a>
+        <a href="contact.html" style="color: white; text-decoration: none; margin-left: 20px;">Contact</a>
+    </nav>
 
-        <div class="card-container">
-            <div class="card">
-                <h2>Move with Buttons or Arrows</h2>
-                <div class="card-content">
-                    [ A ] [ D ] & [←] [→]
-                </div>
-            </div>
-            <div class="card">
-                <h2>Jump</h2>
-                <div class="card-content">
-                    [SPACEBAR] & [ ↑ ]
-                </div>
-            </div>
-            <div class="card">
-                <h2>The Walls</h2>
-                <div class="card-content">
-                    A portal to the other side?
-                </div>
-            </div>
-            <div class="card">
-                <h2>What's Up There?</h2>
-                <div class="card-content">
-                    Careful, don't go too fast!
-                </div>
+    <div class="back-card">
+        <a href="mainmenu.html" style="text-decoration: none;">
+            Back
+        </a>
+    </div>
+
+    <div class="card-container">
+        <div class="card">
+            <h2>Move with Buttons or Arrows</h2>
+            <div class="card-content">
+                [ A ] [ D ] & [←] [→]
             </div>
         </div>
-    
+        <div class="card">
+            <h2>Jump</h2>
+            <div class="card-content">
+                [SPACEBAR] & [ ↑ ]
+            </div>
+        </div>
+        <div class="card">
+            <h2>The Walls</h2>
+            <div class="card-content">
+                A portal to the other side?
+            </div>
+        </div>
+        <div class="card">
+            <h2>What's Up There?</h2>
+            <div class="card-content">
+                Careful, don't go too fast!
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

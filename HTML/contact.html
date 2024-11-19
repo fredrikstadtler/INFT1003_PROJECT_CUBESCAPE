@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
-</head>
-<body>
     <style>
         body {
             background-color: black;
@@ -82,6 +80,7 @@
             border-color: #666;
             box-shadow: 0 0 10px rgba(51, 94, 255, 0.3);
         }
+
         h2 {
             color: white;
             text-align: center;
@@ -89,8 +88,38 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-    </style>
+        .back-card {
+            position: fixed;
+            top: 50px;
+            left: 10px;
+            width: 100px; /* Smaller card width */
+            padding: 10px;
+            background: rgba(60, 60, 60, 0.9);
+            color: white;
+            border: 1px solid #444;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2000; /* Ensure it stays on top */
+        }
 
+        .back-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(51, 94, 255, 0.4);
+            border-color: #4a4a4a;
+        }
+
+        .back-card a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
 <nav style="position: fixed; top: 0; width: 100%; background-color: #333; padding: 10px; display: flex; justify-content: center;">
     <a href="mainmenu.html" style="color: white; text-decoration: none;">Home</a>
     <a href="..\index.html" style="color: white; text-decoration: none; margin-right: 20px; margin-left: 20px;">Play</a>
@@ -98,33 +127,37 @@
     <a href="contact.html" style="color: white; text-decoration: none; margin-left: 20px;">Contact</a>
 
 </nav>
-
-        <div class="card-container">
-            <div class="card">
-                <h2>Sander Haza Rise</h2>
-                <div class="card-content">
-                    <textarea placeholder="Utvikler 1"></textarea>
-                </div>
-            </div>
-            <div class="card">
-                <h2>Hans Fredrik Haddal Stadtler</h2>
-                <div class="card-content">
-                    <textarea placeholder="Utvikler 2"></textarea>
-                </div>
-            </div>
-            <div class="card">
-                <h2>Erlend Isaksen Bekkos</h2>
-                <div class="card-content">
-                    <textarea placeholder="Utvikler 3"></textarea>
-                </div>
-            </div>
-            <div class="card">
-                <h2>Yuchao Ma</h2>
-                <div class="card-content">
-                    <textarea placeholder="Utvikler 4"></textarea>
-                </div>
+    <div class="back-card">
+        <a href="mainmenu.html" style="text-decoration: none;">
+            Back
+        </a>
+    </div>
+    <div class="card-container">
+        <div class="card">
+            <h2>Sander Haza Rise</h2>
+            <div class="card-content">
+                <textarea placeholder="Utvikler 1"></textarea>
             </div>
         </div>
+        <div class="card">
+            <h2>Hans Fredrik Haddal Stadtler</h2>
+            <div class="card-content">
+                <textarea placeholder="Utvikler 2"></textarea>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Erlend Isaksen Bekkos</h2>
+            <div class="card-content">
+                <textarea placeholder="Utvikler 3"></textarea>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Yuchao Ma</h2>
+            <div class="card-content">
+                <textarea placeholder="Utvikler 4"></textarea>
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>
