@@ -3,50 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
     <link rel="stylesheet" href="CSS/style.css">
-    <title>Cubescape</title>
-    <style>
-        .back-card {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            width: 100px; /* Smaller card width */
-            padding: 10px;
-            background: rgba(60, 60, 60, 0.9);
-            color: white;
-            border: 1px solid #444;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(31, 38, 135, 0.37);
-            backdrop-filter: blur(4px);
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 2000; /* Ensure it stays on top */
-        }
-
-        .back-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(51, 94, 255, 0.4);
-            border-color: #4a4a4a;
-        }
-
-        .back-card a {
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-        }
-    </style>
 </head>
 <body>
-    <div class="back-card">
-        <a href="html/mainmenu.html" style="text-decoration: none;">
-            Back
-        </a>
-    </div>
-    
-    <canvas width="375" height="600" id="gameCanvas"></canvas>
-    
-    <script src="JS/main.js"></script>
+<nav style="position: fixed; top: 0; width: 100%; background-color: #333; padding: 10px; display: flex; justify-content: center;">
+    <a href="index.html" style="color: white; text-decoration: none;">Home</a>
+    <a href="html/game.html" style="color: white; text-decoration: none; margin-right: 20px; margin-left: 20px;">Play</a>
+    <a href="html/help.html" style="color: white; text-decoration: none;">Help</a>
+    <a href="html/contact.html" style="color: white; text-decoration: none; margin-left: 20px;">Contact</a>
+</nav>
+
+        <div class="card-container">
+            <a href="HTML/game.html" style="text-decoration: none;">
+                <div class="card">
+                    <h2>Play</h2>
+                    <div class="card-content">
+                        The Game
+                    </div>
+                </div>
+            </a>
+            <a href="HTML/help.html" style="text-decoration: none;">
+                <div class="card">
+                    <h2>Help</h2>
+                    <div class="card-content">
+                        To Understand the Game
+                    </div>
+                </div>
+            </a>
+            <a href="HTML/contact.html" style="text-decoration: none;">
+                <div class="card">
+                    <h2>Contact</h2>
+                    <div class="card-content">
+                        The Developers
+                    </div>
+                </div>
+            </a>
+        </div>
     
 </body>
 </html>

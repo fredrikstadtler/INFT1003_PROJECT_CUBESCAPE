@@ -16,9 +16,10 @@ const player = {
 };
 
 const game = {
-    score: 0, // spiller score
-    difficulty: 1, // spiller vanskelighetsgrad
-    game_over: false 
+    score: 0, // spill score
+    difficulty: 1, // spill vanskelighetsgrad
+    started: false, // spill game startet
+    move_y: 0.05 // spill bevegelse i y retning
 }
 
 function getRandomArbitrary(min, max) { // Hentet fra https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -31,20 +32,26 @@ class Platform {
         this.y = y;
         this.width = width;
         this.height = height;
-        if (can_move >= 0.5) {
+        if (can_move >= 0.8) {
             this.can_move = true;
         }
+        this.passed = false;
     }
     draw() {
-        context.fillStyle = 'green';
-        context.fillRect(this.x, this.y, this.width, this.height);
+        var img = new Image();
+        img.src = "../img/platform.jpg";
+        context.drawImage(img,this.x, this.y, this.width, this.height);
     }
 }
 
-const platforms = []; // lager en array for plattformer
+var platforms = []; // lager en array for plattformer
 
 function createPlatforms(difficulty = 1) {
-    let y = canvas.height - 20;
+    if (platforms.length === 0) {
+        var y = canvas.height*0.75;
+    } else {
+        var y = platforms[platforms.length - 1].y - getRandomArbitrary(70, 150);
+    }
     let width = 100;
     let height = 10;
 
@@ -52,6 +59,12 @@ function createPlatforms(difficulty = 1) {
         let x = Math.random() * (canvas.width - width);
         platforms.push(new Platform(x, y, width, height, Math.random())); // legger til en plattform i arrayen
         y += -getRandomArbitrary(70, 150);
+    }
+}
+
+function check_for_platforms() {
+    if (platforms.length-50 < game.score) {
+        createPlatforms();
     }
 }
 
@@ -77,6 +90,15 @@ function canvas_Correction() {
         platforms.forEach(platform => {
             platform.y -= player.dy*1.7; 
         });
+    }
+}
+
+function platform_y_Movement() {
+    if (game.started === true) {
+    platforms.forEach(platform => {
+        platform.y += game.move_y;
+    });
+    player.y += game.move_y;
     }
 }
 
@@ -108,17 +130,44 @@ function checkCollisions() {
     });
 }
 
+function update_points() {
+    platforms.forEach(platform => {
+        if (player.y < platform.y && !platform.passed) {
+            game.score++;
+            platform.passed = true;
+            console.log(game.score);
+        }
+    });
+    if (game.score*0.005 > game.move_y) {
+        game.move_y += 0.05;
+        console.log(game.move_y);
+    }
+}
+
+function check_for_game_over() {
+    if (player.y >= playerstart + 60 && game.started === true) {
+        game_over();
+    }
+}
+
 function updatePlayer() {
     player.x += player.dx;
     player.y += player.dy;
     gravity();
-    // platform_x_Movement();
+    platform_x_Movement();
+    platform_y_Movement();
     canvas_Correction();
     checkCollisions();
+    update_points();
+    check_for_game_over();
+    check_for_platforms();
     if (player.x + player.width < 0) {
         player.x = canvas.width;
     } else if (player.x > canvas.width) {
         player.x = -player.width;
+    }
+    if (player.y < canvas.height*0.5 && game.started === false) {
+        game.started = true;
     }
 }
 
@@ -140,6 +189,17 @@ function playerMove(e) {
 
 function playerStop(e) {
     if (e.key === 'd' || e.key === 'a' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') player.dx = 0;
+}
+
+function game_over() {
+    game.started = false;
+    player.x = canvas.width / 2 - 20;
+    player.y = playerstart + 60;
+    player.dy = 0;
+    player.dx = 0;
+    game.score = 0;
+    platforms = [];
+    createPlatforms();
 }
 
 function gameLoop() {
