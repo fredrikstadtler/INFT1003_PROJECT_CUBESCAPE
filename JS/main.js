@@ -72,7 +72,7 @@ function drawPlatforms() {
     platforms.forEach(platform => platform.draw());
 }
 
-function platform_x_Movement() {
+function platform_Movement() {
     platforms.forEach(platform => {
         if (platform.can_move) {
             platform.x += 0.5;
@@ -83,6 +83,12 @@ function platform_x_Movement() {
             }
         }
     }); 
+    if (game.started === true) {
+        platforms.forEach(platform => {
+            platform.y += game.move_y;
+        });
+        player.y += game.move_y;
+        }
 }
 
 function canvas_Correction() {
@@ -90,15 +96,6 @@ function canvas_Correction() {
         platforms.forEach(platform => {
             platform.y -= player.dy*1.7; 
         });
-    }
-}
-
-function platform_y_Movement() {
-    if (game.started === true) {
-    platforms.forEach(platform => {
-        platform.y += game.move_y;
-    });
-    player.y += game.move_y;
     }
 }
 
@@ -140,6 +137,7 @@ function update_points() {
     });
     if (game.score*0.005 > game.move_y) {
         game.move_y += 0.05;
+        player.g_a -= 0.0005;
         console.log(game.move_y);
     }
 }
@@ -154,8 +152,7 @@ function updatePlayer() {
     player.x += player.dx;
     player.y += player.dy;
     gravity();
-    platform_x_Movement();
-    platform_y_Movement();
+    platform_Movement();
     canvas_Correction();
     checkCollisions();
     update_points();
