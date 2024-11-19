@@ -10,7 +10,6 @@
         body {
             background-color: black;
             margin: 0;
-            padding-top: 60px;
             font-family: 'Arial', sans-serif;
         }
         
@@ -20,6 +19,7 @@
             flex-direction: column;
             padding: 20px;
             gap: 20px;
+            padding-top: 50px;
         }
         
         .card {
@@ -56,6 +56,17 @@
             margin-top: 15px;
             color: white;
             text-align: center;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;  /* Ensure navbar stays on top of other elements */
         }
         
         textarea {
@@ -94,25 +105,29 @@
 
         <div class="card-container">
             <div class="card">
-                <h2>Move with Buttons</h2>
+                <h2>Move with Buttons or Arrows</h2>
                 <div class="card-content">
-                    [A] & [D]
+                    [ A ] [ D ] & [←] [→]
                 </div>
             </div>
-            </a>
             <div class="card">
                 <h2>Jump</h2>
                 <div class="card-content">
-                    [SPACEBAR]
+                    [SPACEBAR] & [ ↑ ]
                 </div>
             </div>
             <div class="card">
-                <h2>Survive!</h2>
+                <h2>The Walls</h2>
                 <div class="card-content">
-                    The Game
+                    A portal to the other side?
                 </div>
             </div>
-            </a>
+            <div class="card">
+                <h2>What's Up There?</h2>
+                <div class="card-content">
+                    Careful, don't go too fast!
+                </div>
+            </div>
         </div>
     
 </body>

@@ -75,7 +75,7 @@ function platform_x_Movement() {
 function canvas_Correction() {
     if (player.y <= canvas.height*0.5 && player.dy < 0) {
         platforms.forEach(platform => {
-            platform.y -= player.dy*1.5; 
+            platform.y -= player.dy*1.7; 
         });
     }
 }
@@ -129,9 +129,9 @@ function drawPlayer() {
 }
 
 function playerMove(e) {
-    if (e.key === 'd') player.dx = player.speed;
-    else if (e.key === 'a') player.dx = -player.speed;
-    if (e.key === ' ') {
+    if (e.key === 'd' || e.key === 'ArrowRight') player.dx = player.speed;
+    else if (e.key === 'a' || e.key === 'ArrowLeft') player.dx = -player.speed;
+    if (e.key === ' ' || e.key === 'ArrowUp') {
         if (player.y === playerstart + 60 || player.onPlatform === true || player.dy === 0) {
             player.dy = -player.jump;
         }
@@ -139,7 +139,7 @@ function playerMove(e) {
 }   
 
 function playerStop(e) {
-    if (e.key === 'd' || e.key === 'a') player.dx = 0;
+    if (e.key === 'd' || e.key === 'a' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') player.dx = 0;
 }
 
 function gameLoop() {
