@@ -174,6 +174,7 @@ function drawPlayer() {
     context.fillRect(player.x, player.y, player.width, player.height);
 }
 
+//Player movement for keyboard input
 function playerMove(e) {
     if (e.key === 'd' || e.key === 'ArrowRight') player.dx = player.speed;
     else if (e.key === 'a' || e.key === 'ArrowLeft') player.dx = -player.speed;
@@ -186,6 +187,29 @@ function playerMove(e) {
 
 function playerStop(e) {
     if (e.key === 'd' || e.key === 'a' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') player.dx = 0;
+}
+
+//Player movement for touch input
+function handleTouchStart(e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const canvasRect = canvas.getBoundingClientRect();
+    const touchX = touch.clientX - canvasRect.left;
+
+    if (touchX < canvas.width / 2) {
+        player.dx = -player.speed;
+    } else {
+        player.dx = player.speed;
+    }
+
+    if (player.y === playerstart + 60 || player.onPlatform === true || player.dy === 0) {
+        player.dy = -player.jump;
+    }
+}
+
+function handleTouchEnd(e) {
+    e.preventDefault();
+    player.dx = 0;
 }
 
 function game_over() {
@@ -204,6 +228,7 @@ function updateScoreDisplay() {
     scoreDisplay.textContent = `Score: ${game.score}`;
 }
 
+
 function gameLoop() {
     updatePlayer();
     drawPlayer();
@@ -212,8 +237,13 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
+// Event listeners for keyboard input
 document.addEventListener("keydown", playerMove);
 document.addEventListener("keyup", playerStop);
+
+// Event listeners for touch events
+canvas.addEventListener('touchstart', handleTouchStart);
+canvas.addEventListener('touchend', handleTouchEnd);
 
 createPlatforms();
 gameLoop();
