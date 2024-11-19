@@ -43,3 +43,22 @@ canvas {
     color: white;
     font-size: 18px;
 }
+
+.game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+#scoreDisplay {
+    font-size: 25px;
+    font-weight: 800;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background: rgba(60, 60, 60, 0.6);
+    padding: 3px 15px;
+    border-radius: 3px;
+    backdrop-filter: blur(2px);
+}

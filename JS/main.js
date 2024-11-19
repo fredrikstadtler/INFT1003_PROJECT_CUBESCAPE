@@ -199,10 +199,16 @@ function game_over() {
     createPlatforms();
 }
 
+function updateScoreDisplay() {
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    scoreDisplay.textContent = `Score: ${game.score}`;
+}
+
 function gameLoop() {
     updatePlayer();
     drawPlayer();
     drawPlatforms();
+    updateScoreDisplay();
     requestAnimationFrame(gameLoop);
 }
 
