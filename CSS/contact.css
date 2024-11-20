@@ -44,6 +44,7 @@ body {
 
 .card-content {
     margin-top: 15px;
+    margin-right: 25px;
 }
 
 nav {
@@ -55,7 +56,7 @@ nav {
     z-index: 10; /* Ensures the nav bar stays on top of the cards */
 }
 
-textarea {
+.static-box {
     width: 100%;
     height: 100px;
     margin-top: 10px;
@@ -64,17 +65,23 @@ textarea {
     border-radius: 8px;
     background: rgba(30, 30, 30, 0.9);
     color: #fff;
-    resize: vertical;
+    overflow: hidden; /* Prevent overflow */
+    display: flex;
+    align-items: center; /* Vertically center content */
+    text-align: left; /* Align text to the left */
+    word-wrap: break-word; /* Handle long text properly */
     transition: all 0.3s ease;
-}
-
-textarea:focus {
-    outline: none;
-    border-color: #666;
-    box-shadow: 0 0 10px rgba(51, 94, 255, 0.3);
+    box-shadow: inset 0 0 10px; /* Optional for effect */
 }
 
 h2 {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+p {
     color: white;
     text-align: center;
     margin-top: 20px;
