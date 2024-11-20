@@ -123,6 +123,10 @@ function checkCollisions() {
             player.dy = 0;
             player.y = platform.y - player.height;
             player.onPlatform = true;
+
+            if (platform.can_move) {
+                player.x += 1;
+            }
         }
     });
 }
