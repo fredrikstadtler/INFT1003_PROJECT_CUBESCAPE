@@ -8,10 +8,31 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+.logo-container {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.game-logo {
+    max-width: 300px;
+    height: auto;
 }
 
 canvas {
     border: 1px solid white;
+    background: black;
 }
 
 .back-card {
