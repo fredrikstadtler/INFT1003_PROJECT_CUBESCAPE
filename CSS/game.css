@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-    background-color: rgb(11, 11, 11);
+    background-image: url(../img/background.png);
     color: white;
 }
 
@@ -73,8 +73,11 @@ canvas {
     gap: 2px;
 }
 
-#scoreDisplay {
-    font-size: 25px;
+#statDisplay {
+    display: flex;
+    justify-content: space-between;
+    width: 347px;
+    font-size: 20px;
     font-weight: 800;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -83,3 +86,4 @@ canvas {
     border-radius: 3px;
     backdrop-filter: blur(2px);
 }
+

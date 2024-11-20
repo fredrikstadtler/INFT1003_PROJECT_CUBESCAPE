@@ -2,6 +2,14 @@ const canvas = document.getElementById("gameCanvas");
 const context = canvas.getContext("2d");
 const playerstart = canvas.height - 100;
 
+var background_img = new Image();
+background_img.src = "../img/game_background.png";
+var player_img = new Image();
+player_img.src = "../img/character.png";
+var platform_img = new Image();
+platform_img.src = "../img/platform.png";
+
+
 const player = {
     width: 40, // spiller bredde
     height: 40, // spiller høyde
@@ -12,14 +20,15 @@ const player = {
     jump: 4, // spiller hastighet i y retning
     dx: 0, // spiller fart i x retning
     dy: 0, // spiller fart i y retning
-    onPlatform: false
+    onPlatform: false // sjekker om spilleren er på en plattform
 };
 
 const game = {
     score: 0, // spill score
     difficulty: 1, // spill vanskelighetsgrad
     started: false, // spill game startet
-    move_y: 0.05 // spill bevegelse i y retning
+    move_y: 0.05, // spill bevegelse i y retning
+    highscore: 0 // spill highscore
 }
 
 function getRandomArbitrary(min, max) { // Hentet fra https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -38,9 +47,7 @@ class Platform {
         this.passed = false;
     }
     draw() {
-        var img = new Image();
-        img.src = "../img/platform.jpg";
-        context.drawImage(img,this.x, this.y, this.width, this.height);
+        context.drawImage(platform_img,this.x, this.y, this.width, this.height);
     }
 }
 
@@ -136,13 +143,11 @@ function update_points() {
         if (player.y < platform.y && !platform.passed) {
             game.score++;
             platform.passed = true;
-            console.log(game.score);
         }
     });
     if (game.score*0.005 > game.move_y) {
         game.move_y += 0.05;
         player.g_a -= 0.0005;
-        console.log(game.move_y);
     }
 }
 
@@ -174,8 +179,8 @@ function updatePlayer() {
 
 function drawPlayer() {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = 'blue';
-    context.fillRect(player.x, player.y, player.width, player.height);
+    context.drawImage(background_img, 0, 0, canvas.width, canvas.height);
+    context.drawImage(player_img,player.x, player.y, player.width, player.height);
 }
 
 //Player movement for keyboard input
@@ -230,6 +235,11 @@ function game_over() {
 function updateScoreDisplay() {
     const scoreDisplay = document.getElementById('scoreDisplay');
     scoreDisplay.textContent = `Score: ${game.score}`;
+    const highscoreDisplay = document.getElementById('highscoreDisplay');
+    if (game.score > game.highscore) {
+        game.highscore = game.score;
+    }
+    highscoreDisplay.textContent = `Highscore: ${game.highscore}`;
 }
 
 
