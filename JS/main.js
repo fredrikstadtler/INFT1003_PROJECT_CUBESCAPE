@@ -13,7 +13,7 @@ platform_img.src = "../img/platform.png";
 //laster inn SFX
 var jumpSFX = new Audio();
 jumpSFX.src = "../sfx/jump.mp3";
-jumpSFX.volume = 0.1;
+jumpSFX.volume = 0.15;
 
 const player = {
     width: 40, // spiller bredde
