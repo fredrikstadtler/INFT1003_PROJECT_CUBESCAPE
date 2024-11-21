@@ -10,6 +10,10 @@ player_img.src = "../img/character.png";
 var platform_img = new Image();
 platform_img.src = "../img/platform.png";
 
+//laster inn SFX
+var jumpSFX = new Audio();
+jumpSFX.src = "../sfx/jump.mp3";
+jumpSFX.volume = 0.1;
 
 const player = {
     width: 40, // spiller bredde
@@ -184,6 +188,7 @@ function playerMove(e) {
     if (e.key === ' ' || e.key === 'ArrowUp') {
         if (player.y === playerstart + 60 || player.onPlatform === true || player.dy === 0) {
             player.dy = -player.jump;
+            jumpSFX.play();
         }
     }
 }   
@@ -207,6 +212,7 @@ function handleTouchStart(e) {
 
     if (player.y === playerstart + 60 || player.onPlatform === true || player.dy === 0) {
         player.dy = -player.jump;
+        jumpSFX.play();
     }
 }
 
